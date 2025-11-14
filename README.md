@@ -1,2 +1,10 @@
-# doggybudget
-Budget app for dogs
+# DoggyFrictions
+Accounting system for dogs
+
+# Building
+
+```asm
+cd /src/DoggyFrictions.ExternalApi
+npm install
+npx gulp
+```
