@@ -19,7 +19,7 @@ on:
           - "yes"
   push:
     branches:
-      - master
+      - main
       - release/v*
 env:
   DOCKER_BUILDKIT: 1
