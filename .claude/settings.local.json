@@ -4,7 +4,8 @@
       "Bash(npx gulp)",
       "Bash(dir /s /b:*)",
       "Bash(dotnet build:*)",
-      "Bash(test:*)"
+      "Bash(test:*)",
+      "Bash(dir:*)"
     ],
     "deny": [],
     "ask": []
