@@ -108,7 +108,6 @@ jobs:
           registryUrl: ghcr.io
           registryUsername: ssokratov
           registryPassword: ${{ secrets.GH_TOKEN }}
-          environmentVariables: ConnectionStrings__mongo=${{ secrets.MONGODB_CONNECTION_STRING }}
           ingress: external
           targetPort: 80
 
