@@ -108,7 +108,9 @@ jobs:
           registryUrl: ghcr.io
           registryUsername: ssokratov
           registryPassword: ${{ secrets.GH_TOKEN }}
-          environmentVariables: MONGO_CONNECTION_STRING=${{ secrets.MONGODB_CONNECTION_STRING }}
+          environmentVariables: ConnectionStrings__mongo=${{ secrets.MONGODB_CONNECTION_STRING }}
+          ingress: external
+          targetPort: 80
 
       - name: Create tag
         if: ${{ steps.nbgv.outputs.PublicRelease == 'True' && steps.nbgv.outputs.PrereleaseVersionNoLeadingHyphen == '' }}
