@@ -19,14 +19,14 @@
                     <div class="item-block">
                         <div class="content">
                             <div class="sum-block">
+                                <label>Что делим:</label>
                                 <!-- ko if: $root.IsEdit() -->
-                                <label>Что делим</label>
                                 <span class="input-group">
                                     <input type="text" class="form-control" data-bind="value: $root.Description, attr: {tabindex: window.App.GlobalId.Next()}">
                                 </span>
                                 <!-- /ko -->
                                 <!-- ko if: !$root.IsEdit() -->
-                                <p data-bind="text: ($root.Description() || '')"></p>
+                                <span data-bind="text: ($root.Description() || '')"></span>
                                 <!-- /ko -->
                             </div>
                             <div class="sum-block">
@@ -42,8 +42,8 @@
                                     <!-- /ko -->
                                 </div>
                             </div>
-                            <label class="consumers-lable">Делим на:</label>
                             <div class="consumers-block">
+                                <label>Делим на:</label>
                                 <!-- ko foreach: Consumers -->
                                 <!-- ko if: $root.IsEdit() || IsActive() -->
                                 <span class="consumer-sum-edit-span">

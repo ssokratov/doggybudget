@@ -33,17 +33,9 @@
                         <a class="btn btn-primary" data-bind="ifConfirmed: Delete, cdTitle: 'Удаление чека', cdMessage: 'Вы уверены, что ходите удалить чек \'' + Description() + '\'?'"><span class="glyphicon glyphicon-trash"></span></a>
                     </div>
                     <div class="content" data-bind="click: window.App.Functions.Move('#/Session/' + Session.Id + '/Action/' + Id)">
-                        <div class="description-block">
-                            <label>Название: </label>
-                            <span data-bind="text: Description()"></span>
-                        </div>
                         <div class="amount-block">
-                            <label>Сумма: </label>
+                            <label data-bind="text: Description()"></label>
                             <span data-bind="text: Amount().formatMoney()"></span>
-                        </div>
-                        <div class="date-block">
-                            <label>Дата: </label>
-                            <span data-bind="text: Date().formatDate()"></span>
                         </div>
                     </div>
                 </div>
