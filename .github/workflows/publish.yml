@@ -102,10 +102,12 @@ jobs:
       - name: Deploy to Azure Container Apps
         uses: azure/container-apps-deploy-action@v1
         with:
-          acrName: ghcr.io
           containerAppName: doggybudget
           resourceGroup: doggy-budget-rg
           imageToDeploy: ${{ vars.CONTAINER_REGISTRY }}/doggybudget:${{ steps.nbgv.outputs.SemVer2 }}
+          registryUrl: ghcr.io
+          registryUsername: ssokratov
+          registryPassword: ${{ secrets.GH_TOKEN }}
           environmentVariables: MONGO_CONNECTION_STRING=secretref:mongo-connection-string
 
       - name: Create tag
