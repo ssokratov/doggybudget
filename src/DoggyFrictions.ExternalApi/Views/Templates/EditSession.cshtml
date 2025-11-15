@@ -5,12 +5,6 @@
 
             <p>Собаки:</p>
             <table class="table">
-                <thead>
-                <tr>
-                    <th class="wide-cell">Имя</th>
-                    <th class="actions-cell"></th>
-                </tr>
-                </thead>
                 <tbody>
                 <!-- ko foreach: Participants-->
                 <tr>
@@ -34,10 +28,6 @@
                 </tbody>
             </table>
             <button type="submit" class="btn btn-primary btn-raised" data-bind="click: Save"><span class="glyphicon glyphicon-floppy-save"></span> Сохранить тёрку</button>
-            <button type="button" class="btn btn-primary" data-bind="ifConfirmed: window.App.Functions.Move(Navigation.Back().Url),
-                cdTitle: 'Отмена изменений', cdMessage: 'Изменения не будут сохранены. Вы уверены, что хотите покинуть страницу?' ">
-                Отмена
-            </button>
         </div>
     </div>
 </script>

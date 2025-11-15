@@ -91,7 +91,7 @@ function SessionModel(data, isEdit) {
             });
     }
 
-    var currentPlace = _this.IsEdit() ? (_this.Id ? 'Правка' : 'Создать Новую Тёрку') : 'Тёрка';
+    var currentPlace = _this.IsEdit() ? (_this.Id ? 'Правка' : 'Создать Тёрку') : 'Тёрка';
     var navigation = new NavigationModel(currentPlace);
     if (_this.IsEdit() && _this.Id) {
         navigation.AddHistory('Тёркa', '#/Session/' + _this.Id);

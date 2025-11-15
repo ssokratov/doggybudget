@@ -388,8 +388,7 @@ table.table > tfoot td.actions-cell .btn {
   width: 200px;
 }
 .mobile .item-block label {
-  margin-right: 10px;
-  min-width: 60px;
+  min-width: 30px;
 }
 .mobile.action .item-block .payer-block {
   display: inline-block;
@@ -403,6 +402,7 @@ table.table > tfoot td.actions-cell .btn {
 }
 .mobile.action .consumer-sum-edit-span {
   margin-right: 25px;
+  margin-bottom: 5px;
   display: block;
 }
 .mobile.action .consumer-sum-span {
