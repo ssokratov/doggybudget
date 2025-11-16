@@ -7,7 +7,7 @@
     // Always ensure we have exactly one payer
     var payersData = actionData.Payers || [];
     if (payersData.length === 0) {
-        payersData = [{ ParticipantId: sessionModel.Participants[0].Id }];
+        payersData = [{ ParticipantId: sessionModel.Participants()[0].Id }];
     }
     _this.PayerId = ko.observable(payersData.ParticipantId);
 
