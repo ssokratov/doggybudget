@@ -9,7 +9,7 @@
     if (payersData.length === 0) {
         payersData = [{ ParticipantId: sessionModel.Participants()[0].Id }];
     }
-    _this.PayerId = ko.observable(payersData.ParticipantId);
+    _this.PayerId = ko.observable(payersData[0].ParticipantId);
 
     // Always ensure we have exactly one consumption
     var consumptionsData = actionData.Consumptions || [];
