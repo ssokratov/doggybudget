@@ -23,12 +23,12 @@
                                 <!-- ko if: $root.IsEdit() -->
                                 <span>
                                     <select class="form-control" data-bind="options: $root.Session.Participants,
-                                        optionsText: 'Name', optionsValue: 'Id', value: PayerId, attr: {tabindex: window.App.GlobalId.Next() + 1000}"></select>
+                                        optionsText: 'Name', optionsValue: 'Id', value: $root.PayerId, attr: {tabindex: window.App.GlobalId.Next() + 1000}"></select>
                                 </span>
                                 <!-- /ko -->
                                 <!-- ko if: !$root.IsEdit() -->
                                 <span class="input-group">
-                                    <span data-bind="text: $root.Session.GetParticipant(PayerId()).Name() + ': '"></span>
+                                    <span data-bind="text: $root.Session.GetParticipant($root.PayerId()).Name() + ': '"></span>
                                 </span>
                                 <!-- /ko -->
                             </div>  
