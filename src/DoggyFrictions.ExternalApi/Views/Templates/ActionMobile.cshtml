@@ -18,8 +18,22 @@
                     <!-- ko with: Consumptions()[0] -->
                     <div class="item-block">
                         <div class="content">
+                            <div class="consumers-block">
+                                <label>Платил:</label>
+                                <!-- ko if: $root.IsEdit() -->
+                                <span>
+                                    <select class="form-control" data-bind="options: $root.Session.Participants,
+                                        optionsText: 'Name', optionsValue: 'Id', value: PayerId, attr: {tabindex: window.App.GlobalId.Next() + 1000}"></select>
+                                </span>
+                                <!-- /ko -->
+                                <!-- ko if: !$root.IsEdit() -->
+                                <span class="input-group">
+                                    <span data-bind="text: $root.Session.GetParticipant(PayerId()).Name() + ': '"></span>
+                                </span>
+                                <!-- /ko -->
+                            </div>  
                             <div class="sum-block">
-                                <label>Название:</label>
+                                <label>Описание:</label>
                                 <!-- ko if: $root.IsEdit() -->
                                 <span class="input-group">
                                     <input type="text" class="form-control" data-bind="value: $root.Description, attr: {tabindex: window.App.GlobalId.Next()}">
@@ -57,51 +71,8 @@
                                 </span>
                                 <!-- /ko -->
                                 <!-- /ko -->
-                            </div>
-                            <!-- ko if: !$root.IsEdit() -->
-                            <div class="consumers-block">
-                                <label>Платили:</label>
-                                <!-- ko foreach: $root.Payers() -->
-                                <span class="consumer-sum-edit-span">
-                                    <span data-bind="text: $root.Session.GetParticipant(ParticipantId()).Name() + ': '"></span>
-                                    <b data-bind="text: Amount().formatMoney()"></b>
-                                </span>
-                                <!-- /ko -->
-                            </div>
-                            <!-- /ko -->                                    
+                            </div>                           
                         </div>
-                    </div>
-                    <!-- /ko -->
-
-                    <!-- ko if: $root.IsEdit() -->
-                    <div class="sponsors-block">
-                        <p>Платили:</p>
-                        <div data-bind="if: !Payers().length">Нет данных</div>
-                        <!-- ko foreach: Payers -->
-                        <div class="item-block">
-                            <div class="actions">
-                                <button type="button" class="btn btn-primary" data-bind="click: $parent.DeletePayer"><span class="glyphicon glyphicon-trash"></span></button>
-                            </div>
-                            <div class="content">
-                                <div class="payer-block">
-                                    <label>Имя:</label>
-                                    <span>
-                                        <select class="form-control" data-bind="options: $parent.Session.Participants,
-                                            optionsText: 'Name', optionsValue: 'Id', value: ParticipantId, attr: {tabindex: window.App.GlobalId.Next() + 1000}"></select>
-                                    </span>
-                                </div>
-                                <div class="amount-block">
-                                    <label>Сумма:</label>
-                                    <input type="number" class="form-control" data-bind="money: Amount, attr: {tabindex: window.App.GlobalId.Next() + 1000}" placeholder="Сумма">
-                                </div>
-                            </div>
-                        </div>
-                        <!-- /ko -->
-                        <!-- ko if: $root.IsEdit() -->
-                        <button type="button" class="btn btn-primary" data-bind="click: AddPayer">
-                            <span class="glyphicon glyphicon-plus"></span> Добавить
-                        </button>
-                        <!-- /ko -->
                     </div>
                     <!-- /ko -->
 

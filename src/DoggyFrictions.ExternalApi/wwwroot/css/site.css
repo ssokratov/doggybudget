@@ -376,7 +376,7 @@ table.table > tfoot td.actions-cell .btn {
   display: inline-block;
 }
 .mobile .item-block .content .amount-block {
-  display: inline-block;
+  display: block;
   margin-right: 35px;
 }
 .mobile .item-block .content .date-block {
