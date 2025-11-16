@@ -36,7 +36,7 @@
         }, 0);
     });
     _this.PayerName = ko.computed(function () {
-        return _this.Session.GetParticipant(_this.PayerId()).Name()];
+        return _this.Session.GetParticipant(_this.PayerId()).Name();
     });
 
     this.ToggleConsumer = function (participant) {
