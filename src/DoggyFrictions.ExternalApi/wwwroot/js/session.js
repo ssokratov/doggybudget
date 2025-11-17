@@ -23,7 +23,7 @@ function SessionModel(data, isEdit) {
         this.Participants.push(new ParticipantModel({ Id: 0 }));
     }
 
-    this.Actions = new PagedGridModel('Api/Actions/' + data.Id, 25, function (actionData) {
+    this.Actions = new PagedGridModel('Api/Actions/' + data.Id, 50, function (actionData) {
         return new ActionModel(actionData, _this);
     });
 
