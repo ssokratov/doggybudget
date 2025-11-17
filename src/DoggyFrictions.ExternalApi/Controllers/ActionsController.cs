@@ -49,7 +49,6 @@ public class ActionsController : Controller
         {
             return BadRequest();
         }
-
         return Ok(await _repository.UpdateAction(sessionId, actionObject));
     }
 

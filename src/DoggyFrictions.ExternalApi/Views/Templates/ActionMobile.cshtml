@@ -15,7 +15,6 @@
                 <!-- /ko -->
 
                 <div class="form-inline">
-                    <!-- ko with: Consumptions()[0] -->
                     <div class="item-block">
                         <div class="content">
                             <div class="consumers-block">
@@ -48,7 +47,7 @@
                                     <label>Сумма:</label>
                                     <!-- ko if: $root.IsEdit() -->
                                     <div class="form-group">
-                                        <input type="number" class="form-control" data-bind="money: Amount, attr: {tabindex: window.App.GlobalId.Next() + 10}" placeholder="Сумма">
+                                        <input type="number" class="form-control" data-bind="money: $root.Amount, attr: {tabindex: window.App.GlobalId.Next() + 10}" placeholder="Сумма">
                                     </div>
                                     <!-- /ko -->
                                     <!-- ko if: !$root.IsEdit() -->
@@ -74,7 +73,6 @@
                             </div>                           
                         </div>
                     </div>
-                    <!-- /ko -->
 
                     <div class="confirm-buttons">
                         <!-- ko if: $root.IsEdit() -->

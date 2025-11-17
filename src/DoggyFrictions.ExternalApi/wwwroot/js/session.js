@@ -57,6 +57,13 @@ function SessionModel(data, isEdit) {
     };
 
     this.Save = function () {
+        const validParticipants = _this.Participants().filter(p => p.Name());
+        if(!validParticipants.length){
+            console.error("At least one participant is required.");
+            return;
+        }
+
+        _this.Participants(validParticipants);
         var serialized = {
             Id: _this.Id,
             Name: _this.Name(),
