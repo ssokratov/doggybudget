@@ -33,13 +33,6 @@ function copy_vendor(cb) {
   src(paths.packages + "bootstrap/dist/fonts/*")
     .pipe(dest(paths.vendorJsOut + "/bootstrap/dist/fonts"));
 
-  src(paths.packages + "bootstrap-datepicker/dist/js/*.min.js")
-    .pipe(dest(paths.vendorJsOut + "/bootstrap-datepicker/dist/js"));
-  src(paths.packages + "bootstrap-datepicker/dist/css/*.min.css")
-    .pipe(dest(paths.vendorJsOut + "/bootstrap-datepicker/dist/css"));
-  src(paths.packages + "bootstrap-datepicker/dist/locales/bootstrap-datepicker.ru.min.js")
-    .pipe(dest(paths.vendorJsOut + "/bootstrap-datepicker/dist/locales"));
-
   src(paths.packages + "jquery/dist/jquery.min.js")
     .pipe(dest(paths.vendorJsOut + "/jquery/dist"));
   src(paths.packages + "jquery/dist/jquery.min.map")
@@ -77,13 +70,6 @@ function copy_vendor(cb) {
   src(paths.packages + "npm-modernizr/modernizr.js")
     .pipe(terser())
     .pipe(dest(paths.vendorJsOut + "/npm-modernizr/modernizr.min.js"));
-
-  src(paths.packages + "moment/min/moment.min.js")
-    .pipe(dest(paths.vendorJsOut + "/moment/min"));
-  src(paths.packages + "moment/min/moment.min.js.map")
-    .pipe(dest(paths.vendorJsOut + "/moment/min"));
-  src(paths.packages + "moment/dist/locale/*.js")
-    .pipe(dest(paths.vendorJsOut + "/moment/dist/locale"));
 
   src(paths.packages + "respond.js/dest/*.min.js")
     .pipe(dest(paths.vendorJsOut + "/respond.js/dest"));
