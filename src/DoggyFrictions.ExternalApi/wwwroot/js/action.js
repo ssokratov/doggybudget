@@ -2,8 +2,26 @@
     var _this = this;
     _this.Id = actionData.Id || 0;
     _this.Session = sessionModel;
-    _this.Date = ko.observable((actionData.Date || Date()).formatDate());
-    _this.PayerId = ko.observable(actionData.PayerId);
+    _this.PayerId = ko.observable(actionData.PayerId ?? _this.Session.Participants()[0].Id);
+
+    _this.Amount = ko.observable(actionData.Amount || 0);
+    _this.SplitAmount = function () {
+        var amount = Number(_this.Amount());
+        var activeConsumers = _.filter(_this.Consumers(), function (consumerModel) {
+            return consumerModel.IsActive();
+        });
+        var portion = Math.round((amount / activeConsumers.length) * 100) / 100;
+        var rest = amount;
+        _.forEach(activeConsumers, function (consumer, index) {
+            if (index < activeConsumers.length - 1) {
+                rest -= portion;
+                consumer.Amount(portion);
+            } else {
+                rest = Math.round(rest * 100) / 100;
+                consumer.Amount(rest);
+            }
+        });
+    }
 
     _this.Consumers = ko.observableArray(_.map(_this.Session.Participants(), function (participant) {
         var cd = _.find(actionData.Consumers || [], function (consumerData) {
@@ -24,7 +42,6 @@
     _this.Description = ko.observable(actionData.Description);
     _this.IsEdit = ko.observable(isEdit || false);
 
-    _this.Amount = ko.observable(actionData.Amount || 0);
     _this.PayerName = ko.computed(function () {
         return _this.Session.GetParticipant(_this.PayerId()).Name();
     });
@@ -43,8 +60,7 @@
 
     this.Save = function() {
         var operation = _this._createSaveOperation();
-        window.App.Functions.Process(operation);
-        $.when(operation).done(function(actionData) {
+        window.App.Functions.Process(operation, function(actionData) {
             window.App.Functions.Move('#/Session/' + _this.Session.Id)();
         });
     }
@@ -53,7 +69,6 @@
             Id: _this.Id,
             SessionId: _this.Session.Id,
             Description: _this.Description(),
-            Date: _this.Date().extractDate(),
             PayerId: _this.PayerId(),
             Amount: _this.Amount(),
             Consumers: _.map(_.filter(_this.Consumers(), function (consumerModel) {
@@ -80,10 +95,9 @@
             url: 'Api/Actions/' + _this.Session.Id + '/' + _this.Id,
             type: 'DELETE'
         }).promise();
-        window.App.Functions.Process(operation)
-            .done(function() {
-                window.App.Functions.Move('#/Session/' + _this.Session.Id)();
-            });
+        window.App.Functions.Process(operation, function() {
+            window.App.Functions.Move('#/Session/' + _this.Session.Id)();
+        });
     }
 
     var currentPlace = _this.IsEdit() ? (_this.Id ? 'Правка' : 'Новый чек') : 'Чек';
@@ -94,22 +108,5 @@
     }
     this.Navigation = navigation;
 
-    this.SplitAmount = function () {
-        var amount = Number(_this.Amount());
-        var activeConsumers = _.filter(_this.Consumers(), function (consumerModel) {
-            return consumerModel.IsActive();
-        });
-        var portion = Math.round((amount / activeConsumers.length) * 100) / 100;
-        var rest = amount;
-        _.forEach(activeConsumers, function (consumer, index) {
-            if (index < activeConsumers.length - 1) {
-                rest -= portion;
-                consumer.Amount(portion);
-            } else {
-                rest = Math.round(rest * 100) / 100;
-                consumer.Amount(rest);
-            }
-        });
-    }
     _this.Amount.subscribe(_this.SplitAmount);
 }

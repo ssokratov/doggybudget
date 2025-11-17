@@ -3,9 +3,6 @@
         <div>
             @await Html.PartialAsync("SessionHeader")
 
-            <a class="btn btn-primary" data-bind="ifConfirmed: Delete, cdTitle: 'Удаление тёрки', cdMessage: 'Вы уверены, что ходите удалить тёрку \'' + Name() + '\'?'">
-                <span class="glyphicon glyphicon-trash"></span> Удалить
-            </a>
             <p>Собаки:</p>
             <!-- ko foreach: Participants-->
             <div>
