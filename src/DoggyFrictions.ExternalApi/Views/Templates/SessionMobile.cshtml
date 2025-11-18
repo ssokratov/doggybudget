@@ -37,7 +37,7 @@
                     <div class="content" data-bind="click: window.App.Functions.Move('#/Session/' + Session.Id + '/Action/' + Id)">
                         <div class="amount-block">
                             <div><label data-bind="text: Description()"></label></div>
-                            <span data-bind="text: `${Amount().formatMoney()} (${PayerName()})`"></span>
+                            <span data-bind="text: `${Amount().formatMoney()}, платил ${PayerName()}`"></span>
                         </div>
                     </div>
                 </div>
